@@ -16,6 +16,7 @@ int _printf(const char *format, ...)
 	va_start(argm, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return(0);
+
 		i = 0;
 		len  = 0;
 		while (format[i] != '\0')
@@ -27,7 +28,7 @@ int _printf(const char *format, ...)
 				while (prt[j].prt != NULL)
 				{
 					k = 0;
-					if (format[i + 1] == prt[j].ptr[0])
+					if (format[i + 1] == prt[j].prt[0])
 					{
 						k = prt[j].ptr(argm);
 						i++;
