@@ -14,8 +14,9 @@ int _printf(const char *format, ...)
 		{"c", print_char}, {"s", print_string},	{NULL, NULL}};
 
 	va_start(argm, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
+		_putchar('');
 		return(0);
 	}
 
