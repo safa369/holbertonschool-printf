@@ -20,10 +20,10 @@ int _printf(const char *format, ...)
 		len  = 0;
 		while (format[i] != '\0')
 		{
-			else if (format[i] == '%' && format[i + 1])
+			if (format[i] == '%' && format[i + 1])
 			{
 				j = 0;
-				f = 0;1
+				f = 0;
 				while (prt[j].prt != NULL)
 				{
 					k = 0;
@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 			}
 			if (f == 0)
 			{
-				_putcha(format[i]);
+				_putchar(format[i]);
 				len++;
 			}
 			else if(format[i] == '%' && format [i + 1] == '%')
