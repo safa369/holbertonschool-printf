@@ -9,42 +9,44 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int i, j, k, len;
-	print	prt[]={
-		{"c", print_char},
-		{"s", print_string},
-		{NULL, NULL}
-		};
+	int i, j, k, len, f;
+	print	prt[] = {
+		{"c", print_char}, {"s", print_string},	{NULL, NULL}};
 
 	va_start(argm, format);
-
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return(0);
-	else
-	{
 		i = 0;
 		len  = 0;
 		while (format[i] != '\0')
 		{
-			if (format[i] == '%' && format[i + 1] == '%')
-			{
-				_putchar('%');
-				len++;
-			}
 			else if (format[i] == '%' && format[i + 1])
 			{
 				j = 0;
+				f = 0;1
 				while (prt[j].prt != NULL)
 				{
 					k = 0;
-					if (format[i + 1] == prt[j].ptr(argm))
+					if (format[i + 1] == prt[j].ptr[0])
 					{
 						k = prt[j].ptr(argm);
 						i++;
 						len = len + k;
+						f = 1;
 					}
 					j++;
 				}
+			}
+			if (f == 0)
+			{
+				_putcha(format[i]);
+				len++;
+			}
+			else if(format[i] == '%' && format [i + 1] == '%')
+			{
+				_putchar('%');
+				i++;
+				len++;
 			}
 			else
 			{
@@ -54,6 +56,5 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		va_end(argm);
-	}
 return(len);
 }
