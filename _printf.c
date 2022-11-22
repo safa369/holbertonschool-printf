@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int i, j, k, len, f;
+	int i, j, len, f;
 	print	prt[] = {
 		{"c", print_char}, {"s", print_string},	{NULL, NULL}};
 
@@ -30,7 +30,6 @@ int _printf(const char *format, ...)
 				f = 0;
 				while (prt[j].prt != NULL)
 				{
-					k = 0;
 					if (format[i + 1] == prt[j].prt[0])
 					{
 						len = len + prt[j].ptr(argm);
