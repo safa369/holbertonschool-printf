@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 		len  = 0;
 		while (format[i] != '\0')
 		{
-			if (format[i] == '%' && format[i + 1])
+			if (format[i] == '%' && format[i + 1] != '%' && format[i + 1] != '\0')
 			{
 				j = 0;
 				f = 0;
@@ -33,9 +33,8 @@ int _printf(const char *format, ...)
 					k = 0;
 					if (format[i + 1] == prt[j].prt[0])
 					{
-						k = prt[j].ptr(argm);
+						len = len + prt[j].ptr(argm);
 						i++;
-						len = len + k;
 						f = 1;
 					}
 					j++;
@@ -44,13 +43,13 @@ int _printf(const char *format, ...)
 			if (f == 0)
 			{
 				_putchar(format[i]);
-				len++;
+				len = len + 1;
 			}
 			else if(format[i] == '%' && format [i + 1] == '%')
 			{
 				_putchar('%');
 				i++;
-				len++;
+				len = len + 1;
 			}
 			else
 			{
