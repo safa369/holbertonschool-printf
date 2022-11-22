@@ -9,13 +9,14 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int i = j = len = f =0;
+	int i ,j ,len ,f;
 	print	prt[] = {
 		{"c", print_char}, {"s", print_string},	{NULL, NULL}};
 
 	va_start(argm, format);
 	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
 		return (0);
+	i = j = len = 0;
 	while (format[i] != '\0')
 		{
 			if (format[i] == '%' && format[i + 1] != '%' && format[i + 1] != '\0')
@@ -38,7 +39,6 @@ int _printf(const char *format, ...)
 				i++;
 				len = len + 1;
 			}
-			i++;
 		}
 		va_end(argm);
 return (len);
