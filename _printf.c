@@ -16,7 +16,6 @@ int _printf(const char *format, ...)
 	va_start(argm, format);
 	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
-		_putchar('\0');
 		return(0);
 	}
 
@@ -53,7 +52,7 @@ int _printf(const char *format, ...)
 			else
 			{
 				_putchar(format[i]);
-				len++;
+				len = len + 1;
 			}
 			i++;
 		}
