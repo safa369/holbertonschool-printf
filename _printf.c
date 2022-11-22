@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 				f = 0;
 				while (prt[j].prt != NULL)
 				{
-					if (format[i + 1] == prt[j].ptr)
+					if (format[i + 1] == prt[j].ptr[0])
 					{
 						len = len + prt[j].ptr(argm);
 						i = i + 2;
