@@ -9,36 +9,32 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int i ,j ,len ,f;
-	print	prt[] = {
-		{"c", print_char}, {"s", print_string},	{NULL, NULL}};
+	int len = 0;
 
 	va_start(argm, format);
 	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
 		return (0);
-	i = j = len = 0;
-	while (format[i] != '\0')
+	while (*format != '\0')
 		{
-			if (format[i] == '%' && format[i + 1] != '%' && format[i + 1] != '\0')
+			while (*format != '%')
 			{
-				f = 0;
-				while (prt[j].prt != NULL)
-				{
-					if (format[i + 1] == prt[j].prt[0])
-					{
-						len = len + prt[j].ptr(argm);
-						i = i + 2;
-						f = 1;
-					}
-					j++;
-				}
+				_putchar(*format);
+				format++;
+				len++;
 			}
-			else if (format[i] == '%' && format[i + 1] == '%' && f == 0)
+			format++;
+			switch(*format)
 			{
-				_putchar('%');
-				i++;
-				len = len + 1;
+			case '%': _putchar('%');
+				  len++;
+				  break;
+			case 's':len += print_string(argm);
+				 break;
+			case 'c':
+				 len += print_char(argm);
+				 break;
 			}
+			format++;
 		}
 		va_end(argm);
 return (len);
