@@ -9,21 +9,22 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int len = 0;
+	int len, i;
 
 	va_start(argm, format);
 	if ((format[0] == '%' && format[1] == '\0') || format == NULL)
 		return (0);
-	while (*format != '\0')
+	i = len = 0
+	while (format[i] != '\0')
 		{
-			while (*format != '%')
+			while (format[i] != '%')
 			{
-				_putchar(*format);
-				format++;
+				_putchar(format[i]);
+				i++;
 				len++;
 			}
-			format++;
-			switch(*format)
+			i++;
+			switch(format[i])
 			{
 			case '%': _putchar('%');
 				  len++;
@@ -34,7 +35,7 @@ int _printf(const char *format, ...)
 				 len += print_char(argm);
 				 break;
 			}
-			format++;
+			i++;
 		}
 		va_end(argm);
 return (len);
