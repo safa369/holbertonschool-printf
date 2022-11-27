@@ -10,18 +10,14 @@ int print_string(va_list argm)
 {
 	int i = 0;
 	char *s;
-	
-	s = va_arg(argm, char *);
-	if (s == NULL)
-	{
-		s = "(null)";
-	}
-		while (s[i] != '\0')
+
+	s = va_arg (argm, char *);
+	while (s[i] != '\0')
 		{
 			_putchar(s[i]);
 			i++;
 		}
-	return(i);
+	return (i);
 }
 /**
  * print_char - function print char.
@@ -34,5 +30,5 @@ int print_char(va_list argm)
 
 	h = va_arg(argm, int);
 	_putchar(h);
-	return(1);
+	return (1);
 }
