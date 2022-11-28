@@ -11,10 +11,10 @@ int print_string(va_list argm)
 	int i = 0;
 	char *s;
 
-	s = va_arg (argm, char *);
+	s = va_arg(argm, char *);
 	if (s == NULL)
 		s = "(null)";
-	while (s[i] != '\0')
+	while (s[i])
 		{
 			_putchar(s[i]);
 			i++;
@@ -42,18 +42,19 @@ int print_char(va_list argm)
  */
 int get_function(const char c, va_list p)
 {
-	int j ;
+	int j;
+
 	switch (c)
 	{
 		case 's':
 			j = print_string(p);
-			return (j);	
+			return (j);
 		case 'c':
 			j = print_char(p);
 			return (1);
 		case '%':
 			_putchar('%');
-			return(1);
+			return (1);
 	}
-	return(0);
+	return (0);
 }
