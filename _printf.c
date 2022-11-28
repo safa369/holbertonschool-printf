@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int len, i, j, k;
+	int len, i, j;
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
@@ -17,18 +17,16 @@ int _printf(const char *format, ...)
 	i = len = 0;
 	while (format[i] != '\0' && format != NULL)
 		{
-			k = 0;
-			if(format[i] != '%' && format[i] != 'c' && format[i] != 's')
+			if (format[i] != '%' && format[i] != 'c' && format[i] != 's')
 			{
 				_putchar(format[i]);
 				len++;
-				k = 1;
 			}
-			if (format[i] == '%' && k == 0)
+			if (format[i] == '%')
 			{
 				i++;
 				j = get_function(format[i], argm);
-				if (j != 0 )
+				if (j != 0)
 				{
 					len = len + j;
 					i++;
@@ -38,6 +36,7 @@ int _printf(const char *format, ...)
 				{
 					_putchar(format[i]);
 					len++;
+					return (len);
 				}
 			}
 				i++;
