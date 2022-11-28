@@ -12,25 +12,26 @@ int _printf(const char *format, ...)
 	int len, i;
 
 	va_start(argm, format);
-	if (format == NULL)
-		return (0);
+	if (format == NULL || (*(format + 0) == '%' && *(format + 1) == '\0'))
+		return (-1);
 	i = len = 0;
-	while (format[i] != '\0')
+	while (*(format + i) != '\0')
 		{
-			while (format[i] != '%')
+			while (*(format + i) != '%')
 			{
-				_putchar(format[i]);
-				i++;
+				_putchar(*(format + i));
 				len++;
+				i++;
 			}
-			i++;
-			if(format[i] == '%')
+			if(*(format + i) == '%')
 				{
 					_putchar('%');
 					i++;
 				}
-			else
+			else if (*(format + i) != '%' && *(format +i) != '\0')
 				len += get_function(format[i], argm);
+			else if (*(format + i) == '\0')
+				return (len);
 			i++;
 		}
 		va_end(argm);
