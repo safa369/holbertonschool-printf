@@ -15,22 +15,20 @@ int _printf(const char *format, ...)
 		return (-1);
 	va_start(argm, format);
 	i = len = 0;
-	while (format[i] != '\0' && format != NULL)
+	while (format[i] && format)
 		{
 			if (format[i] != '%' && format[i] != 'c' && format[i] != 's')
 			{
 				_putchar(format[i]);
 				len++;
 			}
-			if (format[i] == '%')
+			else if (format[i] == '%')
 			{
 				i++;
 				j = get_function(format[i], argm);
 				if (j != 0)
 				{
-					len = len + j;
-					i++;
-
+					len = len + j;		
 				}
 				else if (format[i] == '\0')
 				{
