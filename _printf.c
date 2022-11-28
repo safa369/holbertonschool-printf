@@ -24,17 +24,13 @@ int _printf(const char *format, ...)
 				len++;
 			}
 			i++;
-			switch(format[i])
-			{
-			case '%': _putchar('%');
-				  len++;
-				  break;
-			case 's':len += print_string(argm);
-				 break;
-			case 'c':
-				 len += print_char(argm);
-				 break;
-			}
+			if(format[i] == '%')
+				{
+					_putchar('%');
+					i++;
+				}
+			else
+				len += get_function(format[i], argm);
 			i++;
 		}
 		va_end(argm);
