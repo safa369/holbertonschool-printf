@@ -47,12 +47,10 @@ int get_function(const char c, va_list p)
 	{
 		case 's':
 			j = print_string(p);
-			return (j);
-			break;
+			return (j);	
 		case 'c':
 			j = print_char(p);
 			return (1);
-			break;
 	}
 	return(0);
 }
