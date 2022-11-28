@@ -51,6 +51,9 @@ int get_function(const char c, va_list p)
 		case 'c':
 			j = print_char(p);
 			return (1);
+		case '%':
+			_putchar('%');
+			return(1);
 	}
 	return(0);
 }
