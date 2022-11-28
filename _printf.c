@@ -15,22 +15,22 @@ int _printf(const char *format, ...)
 	if (format == NULL || (*(format + 0) == '%' && *(format + 1) == '\0'))
 		return (-1);
 	i = len = 0;
-	while (*(format + i) != '\0')
+	while (format[i] != '\0')
 		{
-			while (*(format + i) != '%')
+			while (format[i] != '%')
 			{
-				_putchar(*(format + i));
+				_putchar(format[i]);
 				len++;
 				i++;
 			}
-			if(*(format + i) == '%')
+			if(format[i] == '%')
 				{
 					_putchar('%');
 					i++;
 				}
-			else if (*(format + i) != '%' && *(format +i) != '\0')
+			else if (format[i] != '%' && format[i] != '\0')
 				len += get_function(format[i], argm);
-			else if (*(format + i) == '\0')
+			else if (format[i] == '\0')
 				return (len);
 			i++;
 		}
