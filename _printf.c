@@ -9,30 +9,35 @@
 int _printf(const char *format, ...)
 {
 	va_list argm;
-	int len, i;
+	int len, i, j;
 
-	va_start(argm, format);
-	if (format == NULL || (*(format + 0) == '%' && *(format + 1) == '\0'))
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+	va_start(argm, format);
 	i = len = 0;
-	while (format[i] != '\0')
+	while (format[i] != '\0' && format != NULL)
 		{
-			while (format[i] != '%')
+			if(format[i] != '%')
 			{
 				_putchar(format[i]);
 				len++;
-				i++;
 			}
-			if(format[i] == '%')
+			if (format[i] == '%')
+			{
+				i++;
+				j = get_function(format[i], argm);
+				if (j != 0)
 				{
-					_putchar('%');
+					len = len + j;
 					i++;
 				}
-			else if (format[i] != '%' && format[i] != '\0')
-				len += get_function(format[i], argm);
-			else if (format[i] == '\0')
-				return (len);
-			i++;
+				else if (format[i] == '\0')
+				{
+					_putchar(format[i]);
+					len++;
+				}
+			}
+				i++;
 		}
 		va_end(argm);
 return (len);
