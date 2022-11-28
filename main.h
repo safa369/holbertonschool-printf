@@ -8,9 +8,10 @@
  */
 typedef struct printing
 {
-	char *prt;
+	char prt;
 	int (*ptr)();
 }print;
+int get_function(const char c, va_list p);
 int _printf(const char *format, ...);
 int print_char(va_list argm);
 int print_string(va_list argm);
