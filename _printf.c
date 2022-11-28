@@ -30,6 +30,7 @@ int _printf(const char *format, ...)
 				{
 					len = len + j;
 					i++;
+					continue;
 				}
 				else if (format[i] == '\0')
 				{
