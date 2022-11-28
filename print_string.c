@@ -42,21 +42,17 @@ int print_char(va_list argm)
  */
 int get_function(const char c, va_list p)
 {
-	int i, j;
-	print prt[]={
-		{'c', print_char},
-		{'s', print_string},
-		};
-
-	i = j = 0;
-	while (prt[i].ptr != 0)
+	int j ;
+	switch (c)
 	{
-		if (prt[i].ptr(0) == c)
-		{
-			j += prt[i].ptr(p);
-			return(j);
-		}
-		i++;
+		case 's':
+			j = print_string(p);
+			return (j);
+			break;
+		case 'c':
+			j = print_char(p);
+			return (1);
+			break;
 	}
 	return(0);
 }
