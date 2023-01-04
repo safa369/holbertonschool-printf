@@ -1,0 +1,37 @@
+.TH _PRINTF "2022" "_PRINTF MAN PAGE"
+.hy
+.SH NAME
+.PP
+_printf \[en] print formatted outout conversion .PP .SH SYNOPSIS
+.SH SYNOPSIS
+.PP
+\f[B] \f[R]_printf - FORMAT [option] 
+.PD 0
+.P
+.PD
+.SH DESCREPTION
+.PP
+\f[B]_printf\f[R] The _printf() function is used to print a string, a charcters, an integer on the output screen
+.PP
+#include "main.h"
+.PP
+int _printf(const char *format, ...)
+.PP 
+There are different types of options that are used when you
+want to print with print, there are used when making an assignment, as
+we will see below: 
+.PP 
+%d, %i - print an integer 
+.PP
+%c - print a characteres
+.PP %s - print a string
+.PP
+.SH RETURN VALUE
+.PP
+These
+function return the number of characters printed
+.SH AUTHORS
+Written by:
+.PP 
+Safa Riahi.
+.Th
