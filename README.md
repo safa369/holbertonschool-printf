@@ -24,7 +24,8 @@ Compilation:
 - This code will be compiled this way:
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 
-Function prototypes
+Function prototypes:
+
 All function prototypes used to compile _printf() are included in the header file "main.h" (contains the prototypes of the functions used that can be found in the other files):
 
 - int _printf(const char *format, ...): Contains the _printf function.
