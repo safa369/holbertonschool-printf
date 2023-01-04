@@ -1,44 +1,33 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stddef.h>
+#include <stdio.h>
 /**
- * _printf - function printing.
- * @format: const char.
- * Return: integer the numbers of characters printed.
- */
+ * _printf - function print to standard output.
+ * @format: string to print it.
+ * Return: the number of char to print it.
+*/
 int _printf(const char *format, ...)
 {
-	va_list argm;
-	int len, i, j;
+	int i = 0, count = 0;
+	va_list argmt;
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	va_start(argmt, format);
+	if ((format == NULL) || (format[i] == '%' && !format[i + 1]))
+	{
 		return (-1);
-	va_start(argm, format);
-	i = len = 0;
-	while (format[i] && format)
+	}
+	while (format && format[i])
+	{
+		if (format[i] == '%')
 		{
-			if (format[i] != '%' && format[i] != 'c' && format[i] != 's')
-			{
-				_putchar(format[i]);
-				len++;
-			}
-			else if (format[i] == '%')
-			{
-				i++;
-				j = get_function(format[i], argm);
-				if (j != 0)
-				{
-					len = len + j;		
-				}
-				else if (format[i] == '\0')
-				{
-					_putchar(format[i]);
-					len++;
-					return (len);
-				}
-			}
-				i++;
+				count += get_function(&i, format, argmt);
 		}
-		va_end(argm);
-return (len);
+		else
+		{
+			putchar(format[i]);
+			count++;
+		}
+		i++;
+	}
+va_end(argmt);
+return (count);
 }
