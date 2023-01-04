@@ -3,18 +3,18 @@
 #include <stdarg.h>
 /**
  * print_string - function print a string.
- * @argm: variable of type va_list.
- * Return: the numbers of charactters printed..
+ * @p: the argument pointer.
+ * Return: the numbers of charactters printed.
  */
-int print_string(va_list argm)
+int print_string(va_list p)
 {
-	int i = 0;
 	char *s;
+	int i = 0;
 
-	s = va_arg(argm, char *);
+	s = va_arg(p, char *);
 	if (s == NULL)
 		s = "(null)";
-	while (s[i])
+	while (s[i] != '\0')
 		{
 			_putchar(s[i]);
 			i++;
@@ -23,38 +23,24 @@ int print_string(va_list argm)
 }
 /**
  * print_char - function print char.
- * @argm: variable of type va_list.
- * Return: integer the numbers of char printed.
+ * @p: the argument pointer.
+ * Return: return always 1.
  */
-int print_char(va_list argm)
+int print_char(va_list p)
 {
-	char h;
+	int h;
 
-	h = va_arg(argm, int);
+	h = (char)va_arg(p, int);
 	_putchar(h);
 	return (1);
 }
 /**
- * get_function - function that call the necessery function.
- * @c: const char.
- * @p: va_list.
- * Return: the number of character.
- */
-int get_function(const char c, va_list p)
+ * print_percent - function thar print a %.
+ * @p: the argument pointer.
+ * Return: always 1.
+*/
+int print_percent(va_list __attribute__((unused)) p)
 {
-	int j;
-
-	switch (c)
-	{
-		case 's':
-			j = print_string(p);
-			return (j);
-		case 'c':
-			j = print_char(p);
-			return (1);
-		case '%':
-			_putchar('%');
-			return (1);
-	}
-	return (0);
+	_putchar('%');
+	return (1);
 }
