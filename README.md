@@ -4,6 +4,7 @@ Description
 
 This repository contains C program for my own _printf function written as project of holberton School.
 This function returns the count of printed characters when the function is succeed and -1 if it failed.
+
 The options of the function are:
 
 - *%c: Prints a single character.
